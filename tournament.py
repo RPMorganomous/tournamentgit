@@ -108,12 +108,10 @@ def reportMatch(winner, loser):
 
 def swissPairings():
     """Returns a list of pairs of players for the next round of a match.
-
     Assuming that there are an even number of players registered, each player
     appears exactly once in the pairings.  Each player is paired with another
     player with an equal or nearly-equal win record, that is, a player adjacent
     to him or her in the standings.
-
     Returns:
       A list of tuples, each of which contains (id1, name1, id2, name2)
         id1: the first player's unique id
@@ -121,5 +119,26 @@ def swissPairings():
         id2: the second player's unique id
         name2: the second player's name
     """
-
+    conn = connect()
+    if conn != 'error':
+        c = conn.cursor()
+#       c.execute(
+#              "CREATE VIEW pairings AS SELECT
+#              a.id, a.name, b.id, b.name FROM players as a, players as b
+#              WHERE a.wins = b.wins
+#              AND a.id < b.id
+#              ORDER BY a.wins DESC;")
+        i = 0
+        pairings_query = []
+        l=[]
+        for x in range(4):
+            c.execute("SELECT id, name FROM players ORDER BY wins Limit 2 OFFSET '%s'", (i,))
+            l = c.fetchall()
+            pairings_query.append( l[0] + l[1] )
+# debug      print 'short querey is: ', pairings_query
+            i = i + 2
+        conn.close()
+        return pairings_query
+    else:
+        print 'conn = %s' % conn
 
