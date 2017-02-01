@@ -89,3 +89,4 @@ You should see this result:
 ###Coming Soon - UPGRADES###
 * HTML interface for managing users and tournaments
 * Mobile client app for monitoring tournament progress remotly
+* Round Robin Style Tournament Management
