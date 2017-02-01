@@ -131,7 +131,7 @@ def swissPairings():
         i = 0
         pairings_query = []
         l=[]
-        for x in range(4):
+        for x in range(int(countPlayers())/2):
             c.execute("SELECT id, name FROM players ORDER BY wins Limit 2 OFFSET '%s'", (i,))
             l = c.fetchall()
             pairings_query.append( l[0] + l[1] )
