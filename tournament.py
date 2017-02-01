@@ -122,6 +122,7 @@ def swissPairings():
     conn = connect()
     if conn != 'error':
         c = conn.cursor()
+# keeping this for future upgrade reference
 #       c.execute(
 #              "CREATE VIEW pairings AS SELECT
 #              a.id, a.name, b.id, b.name FROM players as a, players as b
