@@ -59,7 +59,7 @@ Once you are sure that VirtualBox and Vagrant are installed correctly execute th
 
     $ cd /
     $ cd vagrant
-    $ cd tournament
+    $ cd tournamentgit
 
 ###Initialize the database###
 
